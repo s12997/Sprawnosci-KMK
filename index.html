@@ -83,12 +83,12 @@ input[type=text],textarea{width:100%;padding:10px;border:1px solid var(--bd);bor
 <div class="ov" id="ovDet"><div class="sheet big" id="det"></div></div>
 
 <script>
-var TPL=[["Zielony kciuk","🪴","Utrzymaj roślinę przy życiu przez rok w szkole"],["Siewca","🌱","Wysiej nasiona i doczekaj się kiełków"],["Ogrodnik","🌻","Wyhoduj kwiat od nasiona do kwitnienia"],["Zielarz","🌿","Wyhoduj własne zioła w doniczce"],["Mistrz formuł","🧮","Użyj SUMA, JEŻELI i WYSZUKAJ.PIONOWO"],["Tabela przestawna","📊","Zrób tabelę przestawną z własnych danych"],["Wykresy","📈","Stwórz czytelny wykres"],["Skrótowiec","⌨️","Naucz się 25 skrótów klawiszowych"],["Brzeg lover","💖","Bądź w Brzegu 20 razu w roku"]];
-var ICONS=["🏅","🩹","🏊","🍳","🧭","🔥","🪢","🌿","🚴","📷","🔧","⛺","⭐","🎸","📚","🧩","🪴","🌱","🌻","🧮","📊","📈","⌨️","🗺️","🎂","🎉","🎁","🏆", "💖"];
+var TPL=[["Zielony kciuk","🪴","Utrzymaj roślinę przy życiu przez rok w szkole"],["Siewca","🌱","Wysiej nasiona i doczekaj się kiełków"],["Ogrodnik","🌻","Wyhoduj kwiat od nasiona do kwitnienia"],["Zielarz","🌿","Wyhoduj własne zioła w doniczce"],["Mistrz formuł","🧮","Użyj SUMA, JEŻELI i WYSZUKAJ.PIONOWO"],["Tabela przestawna","📊","Zrób tabelę przestawną z własnych danych"],["Wykresy","📈","Stwórz czytelny i bardzo ciekawy wykres niestandardowy"],["Skrótowiec","⌨️","Naucz się 25 skrótów klawiszowych"],["Brzeg lover","💖","Bądź w Brzegu 20 razu w roku"]];
+var ICONS=["🏅","🩹","🏊","🍳","🧭","🔥","🪢","🌿","🚴","📷","🔧","⛺","⭐","🎸","📚","🧩","🪴","🌱","🌻","🧮","📊","📈","⌨️","🗺️","🎂","🎉","🎁","🏆","💖","➕","6️⃣"];
 var COLORS=["#2f6b3a","#2a6fb5","#c0662b","#a8323e","#7b4fa3","#b8962e"];
 var KEY="sprawnosci_v1",items=[],filter="all",sel={icon:"🏅",color:COLORS[0]};
 function load(){try{var r=localStorage.getItem(KEY);if(r)items=JSON.parse(r)}catch(e){}
-   if(!items.length){items=[{id:1,name:"Zrób super plan",desc:"Przygotuj plan, który odpowiada większości nauczycieli",icon:"🗺️",color:"#2a6fb5",got:true},{id:2,name:"Miej urodziny",desc:"Obchodź urodziny z klasą",icon:"🎂",color:"#b8962e",got:false}]}}
+   if(!items.length){items=[{id:1,name:"Zrób super plan",desc:"Przygotuj plan, który odpowiada większości nauczycieli",icon:"🗺️",color:"#2a6fb5",got:true},{id:2,name:"Miej urodziny",desc:"Obchodź urodziny z klasą",icon:"🎂",color:"#b8962e",got:false},{id:3,name:"Dodający",desc:"Dodaj co najmniej 5 nowych sprawności do aplikacji",icon:"➕",color:"#b8962e",got:false},{id:4,name:"Mama uczy",desc:"Młodsza córka dostaje 6 z ułamków",icon:"6️⃣",color:"#bd0000",got:false}]}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(items))}catch(e){}}
 function today(){return new Date().toLocaleDateString("pl-PL")}
 function $(i){return document.getElementById(i)}
