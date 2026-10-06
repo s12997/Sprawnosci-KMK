@@ -48,6 +48,11 @@ input[type=text],textarea{width:100%;padding:10px;border:1px solid var(--bd);bor
 .btn.d{color:#c0392b}
 .big{text-align:center}
 .big .ic{width:96px;height:96px;font-size:48px}
+.bar.full i{background:linear-gradient(90deg,#b8962e,#f1d26a,#b8962e);background-size:200% 100%;animation:shine 1.5s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+.cf{position:fixed;top:-20px;width:10px;height:14px;z-index:9;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){.cf{display:none}.bar.full i{animation:none}}
 </style>
 </head>
 <body>
@@ -93,10 +98,22 @@ function save(){try{localStorage.setItem(KEY,JSON.stringify(items))}catch(e){}}
 function today(){return new Date().toLocaleDateString("pl-PL")}
 function $(i){return document.getElementById(i)}
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e}
+var wasFull=null;
+function celebrate(full){
+ $("pb").parentNode.classList.toggle("full",full);
+ if(full&&wasFull===false){
+  var cols=["#2f6b3a","#2a6fb5","#c0662b","#a8323e","#7b4fa3","#b8962e"];
+  for(var n=0;n<70;n++){var c=document.createElement("i");c.className="cf";
+   c.style.left=Math.random()*100+"vw";c.style.background=cols[n%cols.length];
+   c.style.animationDuration=(2+Math.random()*2)+"s";c.style.animationDelay=(Math.random()*.6)+"s";
+   document.body.appendChild(c);setTimeout(c.remove.bind(c),4500)}
+ }
+ wasFull=full;
+}
 function render(){
  var got=items.filter(function(i){return i.got}).length;
  $("sum").textContent="Zdobyte: "+got+" z "+items.length;
- $("pb").style.width=(items.length?got/items.length*100:0)+"%";
+  $("pb").style.width=(items.length?got/items.length*100:0)+"%";celebrate(items.length>0&&got===items.length);
  var g=$("grid");g.innerHTML="";
  var list=items.filter(function(i){return filter=="all"||(filter=="got")==i.got});
  if(!list.length){g.appendChild(el("div","empty","Nic tu jeszcze nie ma. Dodaj sprawność przyciskiem +"))}
